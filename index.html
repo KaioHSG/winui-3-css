@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WinUI 3 CSS - Showcase</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="winui-3.css">
+</head>
+<body>
+
+    <header style="margin-bottom: 40px;">
+        <h1><i class="wui-icon">&#xE713;</i> System Settings</h1>
+        <p>A complete preview of all HTML5 elements styled with WinUI 3 using <a href="https://github.com/KaioHSG/winui-3-css">WinUI 3 CSS</a>.</p>
+    </header>
+
+    <!-- Buttons Section -->
+    <section class="card">
+        <h2>Buttons</h2>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="primary">Primary Action</button>
+            <button>Standard Button</button>
+            <button disabled>Disabled Button</button>
+            <button><i class="wui-icon">&#xE74E;</i> Save Icon</button>
+        </div>
+    </section>
+
+    <!-- Forms Section -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        
+        <section class="card">
+            <h2>Text Inputs</h2>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <label>Default Input</label>
+                <input type="text" placeholder="Type something...">
+                
+                <label>Password Input</label>
+                <input type="password" value="secret123">
+                
+                <label>Selection Menu</label>
+                <select>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Selection Controls</h2>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <label><input type="checkbox" checked>Enable system notifications</label>
+                <label><input type="checkbox">Run at startup</label>
+                <hr style="border: 0; border-top: 1px solid var(--wui-border-light); width: 100%;">
+                <label><input type="radio" name="theme" checked>Yes</label>
+                <label><input type="radio" name="theme">No</label>
+            </div>
+        </section>
+    </div>
+
+    <!-- Feedback Section -->
+    <section class="card">
+        <h2>Feedback & Range</h2>
+        <p>System update progress: 75%</p>
+        <progress value="75" max="100"></progress>
+        
+        <div style="margin-top: 20px;">
+            <label>Volume Level</label>
+            <input type="range" value="45">
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="card">
+        <h2>Data Display</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th><i class="wui-icon">&#xE8A5;</i> File Name</th>
+                    <th>Status</th>
+                    <th>Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>setup_wizard.exe</td>
+                    <td>Downloaded</td>
+                    <td>14.2 MB</td>
+                </tr>
+                <tr>
+                    <td>holiday_photo.jpg</td>
+                    <td>Syncing...</td>
+                    <td>2.1 MB</td>
+                </tr>
+                <tr>
+                    <td>notes.txt</td>
+                    <td>Modified</td>
+                    <td>4 KB</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Expander / Details Section -->
+    <section>
+        <h2>Advanced Options</h2>
+        <details>
+            <summary>Network Information</summary>
+            <div class="details-content">
+                <p>IP Address: 192.168.1.254</p>
+                <p>MAC: 00-14-22-01-23-45</p>
+                <a href="#">Change adapter settings...</a>
+            </div>
+        </details>
+
+        <details>
+            <summary>Security & Privacy</summary>
+            <div class="details-content">
+                <p>Your device is protected by Windows Defender. Last scan was 2 hours ago.</p>
+                <button>Scan now</button>
+            </div>
+        </details>
+    </section>
+
+    <footer style="margin-top: 50px; text-align: center; color: var(--wui-text-secondary);">
+        <p>Built with <a href="https://github.com/KaioHSG/winui-3-css">WinUI 3 CSS</a></p>
+    </footer>
+
+</body>
+</html>
