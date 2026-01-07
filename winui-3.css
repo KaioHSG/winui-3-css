@@ -4,12 +4,6 @@
    Compatible with Chrome, Edge, and Firefox.
 */
 
-/* --- Standardizing Reset & Firefox Scrollbar --- */
-html {
-    scrollbar-width: auto; 
-    scrollbar-color: var(--wui-text-secondary) transparent; 
-}
-
 html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, 
 kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, 
@@ -24,7 +18,7 @@ menu, nav, output, ruby, section, summary, time, mark, audio, video {
     box-sizing: border-box; 
     -webkit-font-smoothing: antialiased; 
     -moz-osx-font-smoothing: grayscale; 
-    outline: none !important; /* Remove global focus ring */
+    outline: none !important;
 }
 
 body { 
@@ -37,6 +31,12 @@ body {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--wui-text-secondary); border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--wui-accent); }
+
+/* --- Standardizing Reset & Firefox Scrollbar --- */
+html {
+    scrollbar-width: auto; 
+    scrollbar-color: var(--wui-text-secondary) transparent; 
+}
 
 /* --- Font Definitions --- */
 
@@ -54,11 +54,10 @@ body {
 @font-face { font-family: 'Fluent System Icons Resizable'; src: url('./fonts/FluentSystemIcons/FluentSystemIcons-Resizable.woff2') format('woff2'); }
 
 /* Fluent Emoji */
-@font-face { font-family: 'Fluent Emoji Color'; src: url('./fonts/FluentEmoji/FluentEmojiColor.ttf') format('truetype'); }
-@font-face { font-family: 'Fluent Emoji Flat'; src: url('./fonts/FluentEmoji/FluentEmojiFlat.ttf') format('truetype'); }
-@font-face { font-family: 'Fluent Emoji High Contrast'; src: url('./fonts/FluentEmoji/FluentEmojiHighContrast.ttf') format('truetype'); }
-@font-face { font-family: 'Fluent Emoji High Contrast Inverted'; src: url('./fonts/FluentEmoji/FluentEmojiHighContrastInverted.ttf') format('truetype'); }
-
+@font-face { font-family: 'Fluent Emoji Color'; src:url('./fonts/FluentEmoji/FluentEmojiColor.woff2') format('woff2'); font-display:block }
+@font-face { font-family: 'Fluent Emoji Flat'; src:url('./fonts/FluentEmoji/FluentEmojiFlat.woff2') format('woff2'); font-display:block }
+@font-face { font-family: 'Fluent Emoji High Contrast'; src:url('./fonts/FluentEmoji/FluentEmojiHighContrast.woff2') format('woff2'); font-display:block }
+@font-face { font-family: 'Fluent Emoji High Contrast Inverted'; src:url('./fonts/FluentEmoji/FluentEmojiHighContrastInverted.woff2') format('woff2'); font-display:block }
 
 :root {
     --wui-accent: #005fb8;
@@ -113,19 +112,30 @@ button, input[type="button"], input[type="submit"] {
     transition: all 0.1s cubic-bezier(0.7, 0, 0.3, 1);
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
 }
+button:active {
+    transform: scale(0.98);
+    background-color: rgba(128, 128, 128, 0.1);
+}
+button.primary {
+    background-color: var(--wui-accent);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    color: #fff;
+}
 button:hover { background-color: var(--wui-control-hover); }
-button:active { transform: scale(0.98); background-color: rgba(128, 128, 128, 0.1); }
-button.primary { background-color: var(--wui-accent); border: 1px solid rgba(0,0,0,0.1); border-bottom: 1px solid rgba(0,0,0,0.3); color: #fff; }
 
-/* --- Inputs & Select (Focus Ring Removed) --- */
-input[type="text"], input[type="password"], input[type="email"], select, textarea {
+/* --- Inputs & Select --- */
+input:not(
+    [type="checkbox"], [type="radio"], [type="range"],
+    [type="button"], [type="submit"], [type="reset"],
+    [type="hidden"], [type="image"], [type="color"]
+), select, textarea {
     background-color: var(--wui-control-bg);
     border: 1px solid var(--wui-border-light);
     border-bottom: 2px solid var(--wui-border-strong);
     border-radius: 4px; color: var(--wui-text-main);
     padding: 0 12px; line-height: 30px; height: 32px;
     transition: background 0.2s;
-    /* Suppression of native browser effects */
     outline: none !important;
     box-shadow: none !important;
 }
@@ -137,7 +147,7 @@ select {
     padding-right: 32px !important;
 }
 
-/* WinUI Focus: Only the bottom border changes */
+/* WinUI Focus */
 input:focus, select:focus, textarea:focus { 
     background: var(--wui-bg-card); 
     border-bottom-color: var(--wui-accent); 
@@ -201,7 +211,6 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 50%; 
     margin-top: -7px;
     position: relative;
-    /* Spread adjusted to match 4px track height precisely */
     box-shadow: -100vw 0 0 -6.5px var(--wui-accent); 
     z-index: 2;
 }
@@ -234,7 +243,15 @@ tr:hover { background: var(--wui-control-hover); }
     border-radius: 8px; padding: 20px; box-shadow: var(--wui-shadow); margin-bottom: 20px;
 }
 details { background: var(--wui-bg-card); border: 1px solid var(--wui-border-light); border-radius: 8px; margin-bottom: 10px; }
-summary { padding: 12px 16px; cursor: pointer; font-weight: 500; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+summary {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
 summary::after { content: "\F2A3"; font-family: var(--wui-icon-font); font-size: 12px; transition: 0.2s; }
 details[open] summary::after { transform: rotate(180deg); }
 .details-content { padding: 0 16px 16px 16px; color: var(--wui-text-secondary); }
